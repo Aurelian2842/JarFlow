@@ -5,6 +5,7 @@ import dev.neovoxel.jarflow.repository.Repository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
 import org.slf4j.Logger;
@@ -192,7 +193,12 @@ public class MetadataParser {
         }
         JSONObject properties = json.getJSONObject("project").getJSONObject("properties");
         for (String key : properties.keySet()) {
-            content = content.replace("${" + key + "}", properties.getString(key));
+            try {
+                content = content.replace("${" + key + "}", properties.getString(key));
+            } catch (JSONException ignored) {}
+        }
+        if (json.getJSONObject("project").has("version")) {
+            content = content.replace("${project.version}", json.getJSONObject("project").get("version").toString());
         }
         return content;
     }
