@@ -1,10 +1,10 @@
-package com.aurelian2842.jarflow;
+package dev.neovoxel.jarflow;
 
-import com.aurelian2842.jarflow.dependency.Dependency;
-import com.aurelian2842.jarflow.repository.Repository;
-import com.aurelian2842.jarflow.util.DependencyDownloader;
-import com.aurelian2842.jarflow.util.ExternalLoader;
-import com.aurelian2842.jarflow.util.MetadataParser;
+import dev.neovoxel.jarflow.dependency.Dependency;
+import dev.neovoxel.jarflow.repository.Repository;
+import dev.neovoxel.jarflow.util.DependencyDownloader;
+import dev.neovoxel.jarflow.util.ExternalLoader;
+import dev.neovoxel.jarflow.util.MetadataParser;
 import lombok.Setter;
 import me.lucko.jarrelocator.JarRelocator;
 import org.slf4j.Logger;

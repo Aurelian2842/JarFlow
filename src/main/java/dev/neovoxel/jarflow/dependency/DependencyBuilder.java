@@ -1,4 +1,4 @@
-package com.aurelian2842.jarflow.dependency;
+package dev.neovoxel.jarflow.dependency;
 
 import me.lucko.jarrelocator.Relocation;
 

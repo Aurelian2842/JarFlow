@@ -1,7 +1,7 @@
-package com.aurelian2842.jarflow.util;
+package dev.neovoxel.jarflow.util;
 
-import com.aurelian2842.jarflow.dependency.Dependency;
-import com.aurelian2842.jarflow.repository.Repository;
+import dev.neovoxel.jarflow.dependency.Dependency;
+import dev.neovoxel.jarflow.repository.Repository;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -227,7 +227,7 @@ public class DependencyDownloader {
                 }
 
                 success = true;
-                logger.info("Thread id {} download completed (size: {})", threadId, formatFileSize(totalRead));
+                logger.debug("Thread id {} download completed (size: {})", threadId, formatFileSize(totalRead));
 
             } catch (IOException e) {
                 errorMessage = e.getMessage();

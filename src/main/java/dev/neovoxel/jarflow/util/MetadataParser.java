@@ -1,7 +1,7 @@
-package com.aurelian2842.jarflow.util;
+package dev.neovoxel.jarflow.util;
 
-import com.aurelian2842.jarflow.dependency.Dependency;
-import com.aurelian2842.jarflow.repository.Repository;
+import dev.neovoxel.jarflow.dependency.Dependency;
+import dev.neovoxel.jarflow.repository.Repository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
@@ -128,7 +128,7 @@ public class MetadataParser {
                         }
                     }
                     String xmlContent = content.toString();
-                    JSONObject json = XML.toJSONObject(xmlContent);
+                    JSONObject json = XML.toJSONObject(replaceProperties(xmlContent));
                     subDependencies.put(dependency, repo);
                     if (json.getJSONObject("project").has("dependencies")) {
                         JSONObject dependenciesObj = json.getJSONObject("project").getJSONObject("dependencies");
@@ -183,6 +183,18 @@ public class MetadataParser {
         }
         logger.error("Failed to resolve dependency {}", dependency);
         return new AbstractMap.SimpleEntry<>(new HashMap<>(), new ArrayList<>());
+    }
+
+    public static String replaceProperties(String content) {
+        JSONObject json = XML.toJSONObject(content);
+        if (!json.getJSONObject("project").has("properties")) {
+            return content;
+        }
+        JSONObject properties = json.getJSONObject("project").getJSONObject("properties");
+        for (String key : properties.keySet()) {
+            content = content.replace("${" + key + "}", properties.getString(key));
+        }
+        return content;
     }
 
     @Nullable

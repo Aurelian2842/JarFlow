@@ -1,6 +1,6 @@
-package com.aurelian2842.jarflow.util;
+package dev.neovoxel.jarflow.util;
 
-import com.aurelian2842.jarflow.JarFlow;
+import dev.neovoxel.jarflow.JarFlow;
 import net.bytebuddy.agent.ByteBuddyAgent;
 
 import java.io.File;

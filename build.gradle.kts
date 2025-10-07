@@ -7,8 +7,8 @@ plugins {
     id("org.jreleaser") version "1.20.0"
 }
 
-group = "com.aurelian2842.jarflow"
-version = "1.0.1"
+group = "dev.neovoxel.jarflow"
+version = "1.2.0"
 
 repositories {
     mavenCentral()
@@ -38,7 +38,7 @@ publishing {
             pom {
                 name = project.name
                 description = "A library used to load dependencies dynamically"
-                url = "https://github.com/Aurelian2842/JarFlow"
+                url = "https://github.com/NeoVoxelDev/JarFlow"
                 inceptionYear = "2025"
                 licenses {
                     license {
@@ -53,9 +53,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = "scm:git:https://github.com/Aurelian2842/JarFlow.git"
-                    developerConnection = "scm:git:ssh://github.com/Aurelian2842/JarFlow.git"
-                    url = "http://github.com/Aurelian2842/JarFlow"
+                    connection = "scm:git:https://github.com/NeoVoxelDev/JarFlow.git"
+                    developerConnection = "scm:git:ssh://github.com/NeoVoxelDev/JarFlow.git"
+                    url = "http://github.com/NeoVoxelDev/JarFlow"
                 }
             }
         }

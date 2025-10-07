@@ -1,4 +1,4 @@
-package com.aurelian2842.jarflow.repository;
+package dev.neovoxel.jarflow.repository;
 
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
