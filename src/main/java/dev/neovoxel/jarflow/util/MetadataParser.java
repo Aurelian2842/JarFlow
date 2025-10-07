@@ -131,7 +131,13 @@ public class MetadataParser {
                     String xmlContent = content.toString();
                     JSONObject json = XML.toJSONObject(replaceProperties(xmlContent));
                     subDependencies.put(dependency, repo);
-                    if (json.getJSONObject("project").has("dependencies")) {
+                    boolean needResolveMore = true;
+                    try {
+                        JSONObject dependenciesObj = json.getJSONObject("project").getJSONObject("dependencies");
+                    } catch (JSONException e) {
+                        needResolveMore = false;
+                    }
+                    if (needResolveMore) {
                         JSONObject dependenciesObj = json.getJSONObject("project").getJSONObject("dependencies");
                         JSONArray dependencies = new JSONArray();
                         if (dependenciesObj.optJSONArray("dependency", new JSONArray()).length() == 0) {
