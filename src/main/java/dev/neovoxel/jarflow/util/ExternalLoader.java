@@ -1,6 +1,8 @@
 package dev.neovoxel.jarflow.util;
 
 import dev.neovoxel.jarflow.JarFlow;
+import lombok.Getter;
+import lombok.Setter;
 import net.bytebuddy.agent.ByteBuddyAgent;
 
 import java.io.File;
@@ -20,6 +22,8 @@ public class ExternalLoader {
 
     private static MethodHandle addURLMethodHandle;
 
+    @Setter
+    @Getter
     private static ClassLoader classLoader = JarFlow.class.getClassLoader();
 
     private static final Object theUnsafe;
