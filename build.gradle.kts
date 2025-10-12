@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "dev.neovoxel.jarflow"
-version = "1.3.0"
+version = "1.3.1"
 
 repositories {
     mavenCentral()
@@ -17,6 +17,7 @@ repositories {
 
 dependencies {
     implementation("org.slf4j:slf4j-api:2.0.17")
+    implementation("org.slf4j:slf4j-simple:2.0.17")
     implementation("org.json:json:20250517")
     implementation("net.bytebuddy:byte-buddy-agent:1.12.1")
     compileOnly("org.jetbrains:annotations:24.0.1")

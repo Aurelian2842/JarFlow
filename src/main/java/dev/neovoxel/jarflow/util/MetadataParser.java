@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 public class MetadataParser {
 
-    private static final Logger logger = LoggerFactory.getLogger(MetadataParser.class);
+    private static final Logger logger = LoggerFactory.getLogger("JarFlow Parser");
 
     public static Map<Dependency, Repository> resolve(Collection<Dependency> dependencies, Map<Dependency, Repository> resolved, Collection<Repository> repositories) {
         Set<String> missingDeps = new HashSet<>();
@@ -181,14 +181,14 @@ public class MetadataParser {
                     return new AbstractMap.SimpleEntry<>(subDependencies, missingDependencies);
                 }
             } catch (Exception e) {
-                logger.error("Failed to resolve dependency {} from {}", dependency, repo);
+                logger.warn("Failed to resolve dependency {} from {}", dependency, repo);
             } finally {
                 if (connection != null) {
                     connection.disconnect();
                 }
             }
         }
-        logger.error("Failed to resolve dependency {}", dependency);
+        logger.warn("Failed to resolve dependency {}", dependency);
         return new AbstractMap.SimpleEntry<>(new HashMap<>(), new ArrayList<>());
     }
 

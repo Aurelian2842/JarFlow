@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DependencyDownloader {
 
-    private static final Logger logger = LoggerFactory.getLogger(DependencyDownloader.class);
+    private static final Logger logger = LoggerFactory.getLogger("JarFlow Downloader");
 
     public static void download(Repository repository, Dependency dependency, File libDirPath, int threadNum) throws IOException, InterruptedException {
         String downloadUrl = repository.getUrl() + dependency.getGroupId().replace(".", "/") +

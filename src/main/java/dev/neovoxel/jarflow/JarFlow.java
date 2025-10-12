@@ -28,7 +28,7 @@ public class JarFlow {
     @Setter
     private static File libDir = new File("libs");
 
-    private static Logger logger = LoggerFactory.getLogger(JarFlow.class);
+    private static Logger logger = LoggerFactory.getLogger("JarFlow");
 
     static {
         ExternalLoader.init();
