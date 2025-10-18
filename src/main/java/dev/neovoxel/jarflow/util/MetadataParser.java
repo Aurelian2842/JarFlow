@@ -25,13 +25,22 @@ public class MetadataParser {
     public static Map<Dependency, Repository> resolve(Collection<Dependency> dependencies, Map<Dependency, Repository> resolved, Collection<Repository> repositories) {
         Set<String> missingDeps = new HashSet<>();
         for (Dependency dependency : dependencies) {
+            if (dependency.isExcluded(dependency)) {
+                continue;
+            }
             Map.Entry<Map<Dependency, Repository>, List<Dependency>> entry = parse(dependency, repositories);
             for (Map.Entry<Dependency, Repository> subDependency : entry.getKey().entrySet()) {
+                if (dependency.isExcluded(subDependency.getKey())) {
+                    continue;
+                }
                 if (!contains(resolved.keySet(), subDependency.getKey(), true)) {
                     resolved.put(subDependency.getKey(), subDependency.getValue());
                 }
             }
             for (Dependency subDependency : entry.getValue()) {
+                if (dependency.isExcluded(subDependency)) {
+                    continue;
+                }
                 String depKey = subDependency.getGroupId() + ":" + subDependency.getArtifactId();
                 missingDeps.add(depKey);
             }
@@ -52,6 +61,11 @@ public class MetadataParser {
 
     public static Map<Dependency, Repository> resolve(Dependency dependency, Collection<Repository> repositories) {
         Map.Entry<Map<Dependency, Repository>, List<Dependency>> entry = parse(dependency, repositories);
+        for (Map.Entry<Dependency, Repository> subDependency : entry.getKey().entrySet()) {
+            if (dependency.isExcluded(subDependency.getKey())) {
+                entry.getKey().remove(subDependency.getKey());
+            }
+        }
         return parseMissing(entry.getKey(), entry.getValue(), repositories);
     }
 
