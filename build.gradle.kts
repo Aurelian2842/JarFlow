@@ -96,4 +96,9 @@ jreleaser {
             }
         }
     }
+    release {
+        github {
+            branch.set("main")
+        }
+    }
 }
