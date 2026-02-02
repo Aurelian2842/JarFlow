@@ -28,4 +28,4 @@ jobs:
           JRELEASER_MAVENCENTRAL_SONATYPE_PASSWORD: ${{ secrets.JRELEASER_MAVENCENTRAL_PASSWORD }}
           JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./gradlew jreleaserFullRelease
+          ./gradlew publish jreleaserFullRelease
