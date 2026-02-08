@@ -59,7 +59,7 @@ public class JarFlow {
         }
     }
 
-    private static void load(DependencyNode dependencyNode) throws IOException, InterruptedException {
+    private static void load(DependencyNode dependencyNode) throws Throwable {
         List<DependencyNode> origins = new ArrayList<>();
         origins.add(dependencyNode);
         Collection<DependencyNode> flatNodes = PomParser.filter(PomParser.getAllNodes(origins));
@@ -90,7 +90,7 @@ public class JarFlow {
         }
     }
 
-    public static void loadDependency(Dependency dependency) throws IOException, InterruptedException {
+    public static void loadDependency(Dependency dependency) throws Throwable {
         logger.info("Loading dependency: {}", dependency.toString());
         DependencyNode node = PomParser.resolve(dependency, repositories);
         dependencies.add(node);
@@ -168,7 +168,7 @@ public class JarFlow {
         return classes;
     }
 
-    public static void loadDependencies(Collection<Dependency> dependencies) throws IOException, InterruptedException {
+    public static void loadDependencies(Collection<Dependency> dependencies) throws Throwable {
         for (Dependency dependency : dependencies) {
             loadDependency(dependency);
         }
